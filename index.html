@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#155eef">
+  <title>Kartik All-in-One Tools</title>
+  <meta name="description" content="Photo, image and PDF tools in one place. Compress and resize images online.">
+  <style>
+    :root{--blue:#155eef;--ink:#172554;--muted:#64748b;--bg:#f3f6fb;--card:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+    header{background:linear-gradient(135deg,#155eef,#073ca8);color:#fff;padding:28px 16px;text-align:center}
+    header h1{margin:0 0 8px;font-size:clamp(24px,5vw,36px)}
+    header p{margin:0;color:#e6eeff}
+    main{max-width:1000px;margin:24px auto;padding:0 16px}
+    .intro,.panel,.tool-card{background:var(--card);border-radius:16px;padding:20px;box-shadow:0 4px 18px rgba(15,35,80,.07)}
+    .intro{margin-bottom:20px}
+    .intro h2{margin:0 0 8px}
+    .intro p{margin:0;color:var(--muted);line-height:1.5}
+    .search{width:100%;padding:14px 16px;border:1px solid #d8e0ef;border-radius:12px;font-size:16px;margin:18px 0}
+    .section-title{margin:24px 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+    .tool-card{display:block;color:var(--ink);text-decoration:none;transition:transform .15s}
+    .tool-card:hover{transform:translateY(-2px)}
+    .tool-card .emoji{font-size:28px;display:block;margin-bottom:9px}
+    .tool-card strong{display:block}
+    .tool-card small{display:block;color:var(--muted);margin-top:5px}
+    .panel{margin-top:22px}
+    label{display:block;font-weight:700;margin:14px 0 7px}
+    input[type=file],input[type=number],select{width:100%;padding:12px;border:1px solid #d8e0ef;border-radius:10px;background:#fff;font-size:15px}
+    button,.download{display:inline-block;border:0;border-radius:10px;background:var(--blue);color:white;padding:12px 18px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;margin-top:14px}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    .hint,.status{color:var(--muted);font-size:14px;line-height:1.5}
+    .preview{max-width:100%;max-height:260px;display:block;margin-top:14px;border-radius:10px}
+    .result{margin-top:14px;padding:12px;background:#eff6ff;border-radius:10px;display:none}
+    footer{text-align:center;padding:28px 16px;color:var(--muted);font-size:13px}
+    @media(max-width:480px){main{margin-top:16px}.intro,.panel{padding:16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛠️ Kartik All-in-One Tools</h1>
+    <p>फोटो, PDF और डॉक्यूमेंट के उपयोगी टूल्स — एक ही जगह</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>All Your Online Tools in One Place</h2>
+      <p>अपना टूल खोजें और आसानी से इस्तेमाल करें। अभी Photo KB Compressor काम करता है। बाकी टूल्स अगले चरणों में जोड़े जाएंगे।</p>
+    </section>
+
+    <input class="search" id="search" type="search" placeholder="🔎 Search your tool..." aria-label="Search tools">
+
+    <h2 class="section-title">Popular Tools</h2>
+    <section class="grid" id="toolGrid">
+      <a class="tool-card" href="#compressor" data-search="photo kb compressor image size"><span class="emoji">📷</span><strong>Photo KB Compressor</strong><small>फोटो का KB कम करें</small></a>
+      <a class="tool-card" href="#coming" data-search="image resize photo pixel"><span class="emoji">🖼️</span><strong>Image Resizer</strong><small>फोटो की चौड़ाई-ऊंचाई बदलें</small></a>
+      <a class="tool-card" href="#coming" data-search="jpg png webp image converter"><span class="emoji">🔄</span><strong>Image Converter</strong><small>JPG, PNG, WebP</small></a>
+      <a class="tool-card" href="#coming" data-search="crop photo image"><span class="emoji">✂️</span><strong>Photo Cropper</strong><small>फोटो क्रॉप करें</small></a>
+      <a class="tool-card" href="#coming" data-search="passport size photo"><span class="emoji">🪪</span><strong>Passport Photo</strong><small>पासपोर्ट फोटो तैयार करें</small></a>
+      <a class="tool-card" href="#coming" data-search="pdf compress reduce"><span class="emoji">📄</span><strong>PDF Compressor</strong><small>PDF का साइज कम करें</small></a>
+      <a class="tool-card" href="#coming" data-search="jpg to pdf convert"><span class="emoji">📑</span><strong>JPG to PDF</strong><small>फोटो से PDF बनाएं</small></a>
+      <a class="tool-card" href="#coming" data-search="merge pdf join"><span class="emoji">📚</span><strong>Merge PDF</strong><small>PDF फाइल जोड़ें</small></a>
+      <a class="tool-card" href="#coming" data-search="age calculator date"><span class="emoji">🧮</span><strong>Age Calculator</strong><small>उम्र निकालें</small></a>
+      <a class="tool-card" href="#coming" data-search="qr code generator"><span class="emoji">🔳</span><strong>QR Code Generator</strong><small>QR कोड बनाएं</small></a>
+    </section>
+
+    <section class="panel" id="compressor">
+      <h2>📷 Photo KB Compressor</h2>
+      <p class="hint">फोटो चुनें और लक्ष्य साइज सेट करें। प्रोसेसिंग आपके ब्राउज़र में होती है; फोटो किसी सर्वर पर अपलोड नहीं होती।</p>
+      <label for="imageFile">अपनी फोटो चुनें</label>
+      <input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp">
+      <label for="targetKB">Target size (KB)</label>
+      <select id="targetKB">
+        <option value="10">10 KB</option>
+        <option value="20">20 KB</option>
+        <option value="50" selected>50 KB</option>
+        <option value="100">100 KB</option>
+        <option value="200">200 KB</option>
+        <option value="500">500 KB</option>
+      </select>
+      <button id="compressBtn" disabled>Compress Photo</button>
+      <p class="hint" id="fileInfo">अभी कोई फोटो नहीं चुनी गई।</p>
+      <img id="preview" class="preview" alt="Selected photo preview" hidden>
+      <div class="result" id="result" aria-live="polite"></div>
+      <a id="downloadLink" class="download" hidden>Download Compressed Photo</a>
+      <p class="hint">नोट: बहुत छोटी target size पर फोटो की quality या dimensions कम हो सकती हैं। कुछ PNG पारदर्शिता वाली तस्वीरें JPEG में बदलने पर सफेद background में सेव होंगी।</p>
+    </section>
+
+    <section class="panel" id="coming">
+      <h2>अगले चरण में और टूल्स</h2>
+      <p class="hint">Image Resizer, JPG to PDF, PDF Compressor, Admin Panel और Database अगले चरणों में जोड़े जाएंगे।</p>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Kartik All-in-One Tools</footer>
+
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      document.querySelectorAll('.tool-card').forEach(card => {
+        card.style.display = card.dataset.search.includes(q) || card.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+
+    const fileInput = document.getElementById('imageFile');
+    const targetInput = document.getElementById('targetKB');
+    const compressBtn = document.getElementById('compressBtn');
+    const fileInfo = document.getElementById('fileInfo');
+    const preview = document.getElementById('preview');
+    const result = document.getElementById('result');
+    const downloadLink = document.getElementById('downloadLink');
+    let selectedFile = null;
+    let previewUrl = null;
+    let outputUrl = null;
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    fileInput.addEventListener('change', () => {
+      selectedFile = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+      result.style.display = 'none';
+      downloadLink.hidden = true;
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      if (outputUrl) URL.revokeObjectURL(outputUrl);
+      if (!selectedFile) {
+        compressBtn.disabled = true;
+        fileInfo.textContent = 'अभी कोई फोटो नहीं चुनी गई।';
+        preview.hidden = true;
+        return;
+      }
+      if (!selectedFile.type.startsWith('image/')) {
+        selectedFile = null;
+        compressBtn.disabled = true;
+        fileInfo.textContent = 'कृपया JPG, PNG या WebP फोटो चुनें।';
+        preview.hidden = true;
+        return;
+      }
+      previewUrl = URL.createObjectURL(selectedFile);
+      preview.src = previewUrl;
+      preview.hidden = false;
+      fileInfo.textContent = `Original size: ${(selectedFile.size / 1024).toFixed(1)} KB`;
+      compressBtn.disabled = false;
+    });
+
+    function loadImage(file) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error('फोटो पढ़ी नहीं जा सकी। दूसरी फोटो चुनें।'));
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    function canvasBlob(canvas, quality) {
+      return new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', quality));
+    }
+
+    compressBtn.addEventListener('click', async () => {
+      if (!selectedFile) return;
+      compressBtn.disabled = true;
+      compressBtn.textContent = 'Processing...';
+      result.style.display = 'block';
+      result.textContent = 'फोटो compress हो रही है, कृपया प्रतीक्षा करें...';
+      downloadLink.hidden = true;
+      try {
+        const img = await loadImage(selectedFile);
+        const targetBytes = Number(targetInput.value) * 1024;
+        let width = img.naturalWidth;
+        let height = img.naturalHeight;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        let bestBlob = null;
+
+        // Try quality levels first, then reduce dimensions if required.
+        for (let dimensionPass = 0; dimensionPass < 8; dimensionPass++) {
+          canvas.width = width;
+          canvas.height = height;
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+
+          for (let quality = 0.92; quality >= 0.25; quality -= 0.07) {
+            const blob = await canvasBlob(canvas, quality);
+            if (blob && (!bestBlob || blob.size < bestBlob.size)) bestBlob = blob;
+            if (blob && blob.size <= targetBytes) {
+              bestBlob = blob;
+              break;
+            }
+          }
+          if (bestBlob && bestBlob.size <= targetBytes) break;
+          width = Math.max(120, Math.round(width * 0.82));
+          height = Math.max(120, Math.round(height * 0.82));
+        }
+
+        if (!bestBlob) throw new Error('इस फोटो को compress नहीं किया जा सका।');
+        if (outputUrl) URL.revokeObjectURL(outputUrl);
+        outputUrl = URL.createObjectURL(bestBlob);
+        const achieved = (bestBlob.size / 1024).toFixed(1);
+        const reached = bestBlob.size <= targetBytes;
+        result.textContent = `Original: ${(selectedFile.size / 1024).toFixed(1)} KB | New: ${achieved} KB | ${reached ? 'Target achieved' : 'Target तक पहुंचने के लिए और compression जरूरी हो सकती है।'}`;
+        downloadLink.href = outputUrl;
+        downloadLink.download = 'kartik-compressed-photo.jpg';
+        downloadLink.hidden = false;
+      } catch (err) {
+        result.textContent = err.message || 'कुछ गलत हुआ। कृपया दोबारा कोशिश करें।';
+      } finally {
+        compressBtn.disabled = !selectedFile;
+        compressBtn.textContent = 'Compress Photo';
+      }
+    });
+  </script>
+</body>
+</html>
